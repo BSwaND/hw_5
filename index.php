@@ -7,7 +7,7 @@
 
     // hand example
     spl_autoload_register(function ($class){
-        $path = 'src/'. str_replace('\\', '/', $class);
+        $path = 'src/'. str_replace('\\', '/', $class). '.php';
         require_once ($path);
     });
 
