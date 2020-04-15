@@ -17,9 +17,9 @@
 require_once 'vendor/autoload.php';
 
 $autoload = new Autoload;
+$autoload->getPrefix(['app' => 'src']);
 $autoload->register();
 
-//use  src\Myclass;
+$myClass = new app\Myclass\Myclass();
 
-$myClass = new src\Myclass\Myclass();
-
+echo 'Hello world!';

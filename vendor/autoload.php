@@ -1,16 +1,29 @@
 <?php
 
 
-final class autoload
+final class Autoload
 {
-    /** @var string */
-    private   $path;
+    /** @var array */
+    private $prefix;
 
     public function register()
     {
         spl_autoload_register(function ($class) {
-            $this->path =  $this->prefix . str_replace('\\', '/', $class) . '.php';
-            require_once   $this->path;
+            if ($this->prefix) {
+                $keyPrefix = key($this->prefix);
+                $class = str_replace($keyPrefix, $this->prefix[$keyPrefix], $class);
+                var_dump(str_replace('\\', '/', $class) . '.php');
+
+
+                //var_dump($this->prefix[$keyPrefix] . '/'. str_replace('\\', '/', $class) . '.php');
+                //return require_once  ('src/Myclass/Myclass.php');
+                 return require_once  str_replace('\\', '/', $class) . '.php';
+            }
         });
+    }
+
+    public function getPrefix($prefix): array
+    {
+        return $this->prefix = $prefix;
     }
 }
