@@ -1,7 +1,7 @@
 <?php
 
 
-namespace src\Myclass;
+namespace app\Myclass;
 
 
 class Myclass
